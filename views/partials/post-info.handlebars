@@ -1,0 +1,39 @@
+
+
+
+<div class=" card accordion" id="post-accordion-{{id}}">
+  <div class=" card-body accordion-item">
+    <h2 class="accordion-header" id="heading-{{id}}">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}" aria-expanded="true" aria-controls="collapse{{id}}">
+        <h1 class="card-title">{{title}}</h1> <span>by {{user.username}} on {{format_date created_at}}<span>
+      </button>
+    </h2>
+    <div id="collapse{{id}}" class="accordion-collapse collapse show" aria-labelledby="heading-{{id}}" data-bs-parent="#post-accordion-{{id}}">
+      <div class="card-text accordion-body">
+        <p>{{content}}</p>
+         <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a> 
+        
+              {{#if loggedIn}}
+              <form class="comment-form">
+                <div>
+                  <textarea name="comment-body"></textarea>
+                </div>
+                <div>
+                  <button type="submit">add comment</button>
+                </div>
+              </form>
+              {{/if}}
+              
+              {{> comments post.comments}}
+              
+              {{#if loggedIn}}
+              <script src="/javascript/comment.js"></script>
+              {{/if}}
+
+
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
