@@ -12,4 +12,7 @@ async function openDropDown(event){
 
 const allPosts = document.querySelectorAll('.card')
 console.log(`allPosts ${JSON.stringify(allPosts)}`)
-allPosts.forEach(aPost => aPost.addEventListener('click', openDropDown))
+
+allPosts.forEach(aPost => {
+    aPost.addEventListener('click', openDropDown)
+})
