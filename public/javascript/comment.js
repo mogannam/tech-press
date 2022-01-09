@@ -34,8 +34,8 @@ async function commentFormHandler(event) {
   }
 }
 
-const btns = document.querySelectorAll('.comment-btn')
+const commentBtns = document.querySelectorAll('.comment-btn')
 
-btns.forEach(aBtn => {
+commentBtns.forEach(aBtn => {
   aBtn.addEventListener('click', commentFormHandler);
 })

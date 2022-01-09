@@ -1,4 +1,4 @@
-<article>
+{{!-- <article>
   <a href="/dashboard"> &larr; Back to dashboard</a>
   <h2>
     Edit Post
@@ -27,8 +27,56 @@
   </div>
 </form>
 
-{{> comments post.comments}}
-
+{{> comments post.comments}} --}}
+{{!-- 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>
-<script src="/javascript/comment.js"></script>
+<script src="/javascript/comment.js"></script> --}}
+
+
+{{!--  --}}
+
+<div class=" card accordion" id="post-accordion-{{id}}" data-post-id="{{id}}">
+  <div class=" card-body accordion-item">
+    <h2 class="accordion-header" id="heading-{{id}}">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{id}}" aria-expanded="true" aria-controls="collapse{{id}}">
+        <h1 class="card-title post-title"> {{title}}</h1> <span>by {{user.username}} on {{format_date created_at}}<span>
+      </button>
+    </h2>
+    <div id="collapse{{id}}" class="accordion-collapse collapse " aria-labelledby="heading-{{id}}" data-bs-parent="#post-accordion-{{id}}">
+      <div class="card-text accordion-body container">
+        <div class="row">
+          <label class="col" for="post-title-{{id}}">Edit Title:</label>
+          <input class="card-title post-title col-10" id="post-title-{{id}}"  value="{{title}}"></input><br>
+        </div>
+
+        <div class="row ">
+          <label style="height:100% !important " class="h-100 col" for="post-content-{{id}}" > Edit Post:</label>
+          <textarea id="post-content-{{id}}" class="post-content col-10" >{{content}}</textarea>
+        </div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <button class="save-post-btn col" type="submit" data-post-id="{{id}}" >Save post</button>
+          <button class="delete-post-btn col" type="button" data-post-id="{{id}}" >Delete post</button>
+        </div>
+          
+         
+        <hr>
+        
+          {{#if @root.loggedIn}}
+          
+          <form class="comment-form container">
+            <div class="row align-items-center">
+              <label class="col-2" for="comment-body-{{id}}">Add Comment: </label>
+              <textarea class="col" id="comment-body-{{id}}" name="comment-body"></textarea>
+              <button class="comment-btn col" id="data-post-{{id}}" data-post-id="{{id}}" type="submit">add comment</button>
+            </div>
+          </form>
+          {{/if}}
+          {{> comments comments}}
+      </div>
+    </div>
+  </div>
+ 
+</div>
