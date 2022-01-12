@@ -1,40 +1,3 @@
-{{!-- <article>
-  <a href="/dashboard"> &larr; Back to dashboard</a>
-  <h2>
-    Edit Post
-  </h2>
-  <form class="edit-post-form">
-    <div>
-      <input name="post-title" type="text" value="{{post.title}}" />
-    </div>
-    <div>
-      {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date comments.created_at}}
-      |
-      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
-    </div>
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
-  </form>
-</article>
-
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">add comment</button>
-  </div>
-</form>
-
-{{> comments post.comments}} --}}
-{{!-- 
-<script src="/javascript/edit-post.js"></script>
-<script src="/javascript/delete-post.js"></script>
-<script src="/javascript/comment.js"></script> --}}
-
-
-{{!--  --}}
 
 <div class=" card accordion" id="post-accordion-{{id}}" data-post-id="{{id}}">
   <div class=" card-body accordion-item">
@@ -45,32 +8,27 @@
     </h2>
     <div id="collapse{{id}}" class="accordion-collapse collapse " aria-labelledby="heading-{{id}}" data-bs-parent="#post-accordion-{{id}}">
       <div class="card-text accordion-body container">
-        <div class="row">
-          <label class="col" for="post-title-{{id}}">Edit Title:</label>
-          <input class="card-title post-title col-10" id="post-title-{{id}}"  value="{{title}}"></input><br>
-        </div>
-
-        <div class="row ">
-          <label style="height:100% !important " class="h-100 col" for="post-content-{{id}}" > Edit Post:</label>
-          <textarea id="post-content-{{id}}" class="post-content col-10" >{{content}}</textarea>
-        </div>
+        <label class="" for="post-title-{{id}}">Edit Title:</label><br>
+        <input class="card-title post-title w-100" id="post-title-{{id}}"  value="{{title}}"></input><br>
+        <label style="height:100% !important " for="post-content-{{id}}" > Edit Post:</label><br>
+        <textarea id="post-content-{{id}}" class="post-content w-100" >{{content}}</textarea>
 
         <div class="row">
-          <div class="col-2"></div>
           <button class="save-post-btn col" type="submit" data-post-id="{{id}}" >Save post</button>
           <button class="delete-post-btn col" type="button" data-post-id="{{id}}" >Delete post</button>
         </div>
           
-         
+        <br>
         <hr>
+        <br>
         
-          {{#if @root.loggedIn}}
+           {{#if @root.loggedIn}}
           
-          <form class="comment-form container">
-            <div class="row align-items-center">
-              <label class="col-2" for="comment-body-{{id}}">Add Comment: </label>
-              <textarea class="col" id="comment-body-{{id}}" name="comment-body"></textarea>
-              <button class="comment-btn col" id="data-post-{{id}}" data-post-id="{{id}}" type="submit">add comment</button>
+          <form class="comment-form container text-center">
+            <div class="col">
+              <h1 class="row w-100  m-0" for="comment-body-{{id}}" style="text-align: center !important">Add Comment: </h1>
+              <textarea class="row w-100" id="comment-body-{{id}}" name="comment-body"></textarea>
+              <button  class=" text-center comment-btn row w-100 " id="data-post-{{id}}" data-post-id="{{id}}" type="submit">add comment</button>
             </div>
           </form>
           {{/if}}
@@ -78,5 +36,7 @@
       </div>
     </div>
   </div>
+
+ 
  
 </div>

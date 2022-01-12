@@ -176,3 +176,11 @@ footer {
   padding: 1%;
   font-size: 110%;
 }
+
+ header a, .t-white-important {
+  color: white !important;
+}
+
+ul,ol {
+  list-style-type: none;
+}

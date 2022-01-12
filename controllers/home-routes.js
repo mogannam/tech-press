@@ -3,6 +3,11 @@ const { compareSync } = require('bcrypt');
 const sequelize = require('../config/connection');
 const { Post, User, Comment, Vote } = require('../models');
 
+//pageSubTitle: "The Tech Press Blog"
+//pageSubTitle: yourBlog
+const theTechPressBlog = "The Tech Press Blog";
+const yourBlog = "Your Tech Press Blog"
+
 // get all posts for homepage
 router.get('/', (req, res) => {
   console.log('======================');
@@ -34,7 +39,8 @@ router.get('/', (req, res) => {
       
       res.render('homepage', {
         posts,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        pageSubTitle: "The Tech Press Blog"
       });
     })
     .catch(err => {
@@ -81,7 +87,9 @@ router.get('/post/:id', (req, res) => {
 
       res.render('single-post', {
         post,
-        loggedIn: req.session.loggedIn
+        loggedIn: req.session.loggedIn,
+        pageSubTitle: yourBlog
+
       });
     })
     .catch(err => {
